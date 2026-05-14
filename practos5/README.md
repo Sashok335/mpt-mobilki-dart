@@ -15,41 +15,27 @@
 
 Проект разделён на модули по слоям:
 
-```text
-lib/
-  dart_project.dart           # публичный экспорт
-  src/
-    domain/
-      id.dart                  # базовый интерфейс
-      models/                  # сущности
-        client.dart
-        house.dart
-        service.dart
-        order.dart
-      validators/              # валидация
-        text_validator.dart
-        number_validator.dart
-      interfaces/              # абстрактные репозитории
-        client_repository.dart
-        house_repository.dart
-        service_repository.dart
-        order_repository.dart
-    data/
-      database.dart            # SQLite, создание таблиц
-      repositories/            # реализации CRUD
-        client_repository_impl.dart
-        house_repository_impl.dart
-        service_repository_impl.dart
-        order_repository_impl.dart
-    cli/
-      input_helper.dart        # ввод с валидацией
-      menu.dart                # цикл меню и обработчики
-bin/
-  dart_project.dart            # точка входа (main)
-test/
-  domain_test.dart             # toMap / fromMap
-  data_test.dart               # вставка и чтение из SQLite
-  validation_test.dart         # валидный и невалидный ввод
+```
+dart_project/
+├── pubspec.yaml
+├── bin/
+│ └── dart_project.dart       # Только запуск
+├── lib/
+│ └── dart_project.dart       # Экспорт всех публичных частей
+│ └── src/
+│   ├── domain/
+│   │ ├── models/             # Сущности (Client, House, Service, Order)
+│   │ └── validators/         # Валидаторы (text_validator.dart, number_validator.dart)
+│   ├── data/
+│   │ ├── database.dart       # Открытие SQLite, создание таблиц
+│   │ └── repositories/       # Классы для CRUD (client_repository.dart и т.д.)
+│   └── cli/
+│     ├── menu.dart           # Главное меню и команды
+│     └── input_helper.dart   # Повторный ввод с валидацией
+└── test/
+  ├── domain_test.dart
+  ├── data_test.dart
+  └── validation_test.dart
 ```
 
 ### Что вынесено в каждый слой и почему
